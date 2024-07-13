@@ -19,8 +19,6 @@ def do_deploy(archive_path):
         return False
     archive = archive_path.split('/')[-1]
     archive_name = archive.split('.')[0]
-    print(archive)
-    print(archive_name)
     # Copy the archive to the server
     if put(archive_path, '/tmp/').failed:
         return False
@@ -29,7 +27,6 @@ def do_deploy(archive_path):
     if run(f'mkdir -p {release_path}').failed:
         return False
     # Extract the archive into the server
-    print(release_path)
     if run(f'tar -xzf /tmp/{archive} -C {release_path}').failed:
         return False
     # Remove the archive

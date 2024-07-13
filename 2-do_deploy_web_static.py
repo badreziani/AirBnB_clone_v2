@@ -33,10 +33,10 @@ def do_deploy(archive_path):
     if run(f'rm /tmp/{archive}').failed:
         return False
     # Move the extracted content to the correct directory
-    if run(f'mv {release_path}/web_static/* {release_path}').failed:
+    if run(f'mv {release_path}web_static/* {release_path}').failed:
         return False
     # Remove the web_static directory
-    if run(f'rm -rf {release_path}/web_static').failed:
+    if run(f'rm -rf {release_path}web_static').failed:
         return False
     # Delete the symbolic link
     if run('rm -rf /data/web_static/current').failed:

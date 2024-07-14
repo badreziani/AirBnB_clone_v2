@@ -42,7 +42,7 @@ def do_deploy(archive_path):
     if run('rm -rf /data/web_static/current').failed:
         return False
     # Create the new symbolic link
-    if run(f'ln -sf {release_path} /data/web_static/current').failed:
+    if run(f'ln -s {release_path} /data/web_static/current').failed:
         return False
     print('New version deployed!')
     return True

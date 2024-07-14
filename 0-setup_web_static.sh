@@ -18,15 +18,19 @@ echo '<html>
 </html>' > /data/web_static/releases/test/index.html
 
 # Create a symblic link
+if [ -d /data/web_static/current ]
+then
+	rm -rf /data/web_static/current
+fi
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 # Give ownership to ubuntu
-chown -R ubuntu:ubuntu /data/
+chown -hR ubuntu:ubuntu /data/
 
 # Update nginx config
-cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.save
 sed -i 's/server_name _;/server_name _;\n\tlocation \/hbnb_static {\n\t\talias \/data\/web_static\/current;\n\t}/'\
        	/etc/nginx/sites-available/default
 
+ln -sf '/etc/nginx/sites-available/default' '/etc/nginx/sites-enabled/default'
 # Restart nginx to apply changes
 service nginx restart

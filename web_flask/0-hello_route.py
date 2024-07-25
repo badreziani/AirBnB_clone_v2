@@ -8,6 +8,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
+
 @app.route('/', strict_slashes=False)
 def root():
     """The root of the app"""
@@ -15,5 +16,5 @@ def root():
 
 
 if __name__ == '__main__':
-   """Starting the app"""
-   app.run(host='0.0.0.0', port='5000')
+    """Starting the app"""
+    app.run(host='0.0.0.0', port='5000')

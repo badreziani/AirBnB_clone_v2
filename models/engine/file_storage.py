@@ -61,3 +61,8 @@ class FileStorage:
         else:
             with open(self.__class__.__file_path, "w") as f:
                 json.dump({}, f)
+
+    def close(self):
+        """call reload() method
+        for deserializing the JSON file to objects"""
+        self.reload()

@@ -56,8 +56,8 @@ class BaseModel:
 
     def to_dict(self):
         """Convert instance into dict format"""
+        i_dict = self.__dict__.copy()
         i_dict = dict({
-            **self.__dict__,
             "__class__": self.__class__.__name__,
             "created_at": self.created_at.isoformat(),
             "updated_at": self.updated_at.isoformat()

@@ -17,7 +17,7 @@ def close_session():
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """Feches list of states"""
-    states = sorted(list(storage.all("State")), key="name")
+    states = sorted(storage.all("State").values(), key="name")
     return render_template("7-states_list.html", states=state)
 
 

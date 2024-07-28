@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def close_session():
+def close_session(error):
     """Removes the current SQLAlchemy Session"""
     storage.close()
 
@@ -17,7 +17,7 @@ def close_session():
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """Feches list of states"""
-    states = sorted(storage.all("State").values(), key="name")
+    states = storage.all("State").values()
     return render_template("7-states_list.html", states=states)
 
 

@@ -18,7 +18,7 @@ def close_session():
 def states_list():
     """Feches list of states"""
     states = sorted(storage.all("State").values(), key="name")
-    return render_template("7-states_list.html", states=state)
+    return render_template("7-states_list.html", states=states)
 
 
 if __name__ == '__main__':
